@@ -17,17 +17,17 @@
     <div class="col-md-4 p-4">
      <img class ="picture" src="{{i.PizzaImage}}">
 
-      <h5 class="pt-3">{{i.PizzaName}}</h5>
+      <h5 class="pt-3" id="piz{{i.id}}">{{i.PizzaName}}</h5>
      <div class="form-check-inline">
       <label class="form-check-label">
-       <input class="form-check-input" type="radio">
+       <input class="form-check-input" type="radio" name="pizza{{i.id}}" value="{{i.PizzapriceM}}">
        <i>{{i.PizzapriceM}} ₹ </i>
       </label>
 
      </div>
      <div class="form-check-inline">
       <label class="form-check-label">
-       <input class="form-check-input" type="radio">
+       <input class="form-check-input" type="radio" name="pizza{{i.id}}" value="{{i.PizzapriceL}}">
        <i>{{i.PizzapriceL}} ₹ </i>
       </label>
 
@@ -39,11 +39,17 @@
 
    </div>
   </div>
- </div>
-<div class="col-md-4">
 
+<div class="col-md-4 orders">
+<h3 class="text-center">Orderd  Items</h3>
+ <ul></ul>
+ <h5>Total : 0₹ </h5>
 </div>
-</div>
+</div> </div>
+
+
+<script src="{% static 'js/order.js' %}"></script>
+
 
 
 
