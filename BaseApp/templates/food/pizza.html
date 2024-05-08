@@ -1,10 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'food/base.html' %}
+{% load static %}
+
+{% block title %}S&P Pizza Round {% endblock %}
+{% block content %}
+<div class="container">
+
+  <h1 class="title">Welcome to Our Authentic Pizza</h1>
+
+ <blockquote>"This pizza is like a slice of heaven. Every bite is bursting with flavor!"
+ </blockquote>
+ <p>- John Doe, Pizza Lover</p>
+ <div class="row">
+  <div class="col-md-8">
+   <div class="row text-center">
+    {% for i in item %}
+    <div class="col-md-4 p-4">
+     <img class ="picture" src="{{i.PizzaImage}}">
+
+      <h5 class="pt-3">{{i.PizzaName}}</h5>
+     <div class="form-check-inline">
+      <label class="form-check-label">
+       <input class="form-check-input" type="radio">
+       <i>{{i.PizzapriceM}} ₹ </i>
+      </label>
+
+     </div>
+     <div class="form-check-inline">
+      <label class="form-check-label">
+       <input class="form-check-input" type="radio">
+       <i>{{i.PizzapriceL}} ₹ </i>
+      </label>
+
+     </div>
+     <div><button class="btn-info m-3 ">Add To Cart</button> </div>
+
+    </div>
+    {% endfor %}
+
+   </div>
+  </div>
+ </div>
+<div class="col-md-4">
+
+</div>
+</div>
+
+
+
+
+
+{% endblock %}

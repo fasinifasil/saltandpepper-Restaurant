@@ -1,0 +1,30 @@
+.logo{
+margin-bottom:10px;}
+.home{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+background-image:url("../images/pic6.jpg");
+background-size:cover;
+z-index:-1;
+color:white;
+}
+.title{
+    margin:30px;
+    padding:30px;
+    text-align:center;
+}
+
+.picture{
+    width:200px;
+    height:200px;
+    border-radius:150px;
+}
+
+.item-title{
+    position:relative;
+    padding:10px;
+    left:80px;
+}

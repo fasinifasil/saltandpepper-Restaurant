@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'food/base.html' %}
+{% block title %}Burger Tower at Salt and Pepper{% endblock %}
+{% block content %}
+<div class="container-fluid">
+     <div class="row">
+  <div class="col-md-8">
+       <h1 class="title">Welcome to Burger Tower</h1>
+        <p>Indulge in a Towering Selection of Delicious Burgers</p>
+   <div class="row text-center">
+    {% for i in item %}
+    <div class="col-md-4 p-4">
+     <img class ="picture" src="{{i.BurgerImage}}">
+
+      <h5 class="pt-3">{{i.BurgerName}}</h5>
+     <div class="form-check-inline">
+      <label class="form-check-label">
+       <input class="form-check-input" type="radio">
+       <i>{{i.BurgerpriceM}} ₹ </i>
+      </label>
+
+     </div>
+     <div class="form-check-inline">
+      <label class="form-check-label">
+       <input class="form-check-input" type="radio">
+       <i>{{i.BurgerpriceL}} ₹ </i>
+      </label>
+
+     </div>
+     <div><button class="btn-info m-3 ">Add To Cart</button> </div>
+
+    </div>
+{% endfor %}
+</div>
+{% endblock %}
+
+  </div>
+     </div>
+</div>
