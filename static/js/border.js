@@ -24,6 +24,8 @@ function addBurger(bid) {
     // Get orders and total from localStorage or initialize if they don't exist
     var orders = JSON.parse(localStorage.getItem('orders')) || [];
     var total = parseFloat(localStorage.getItem('total')) || 0;
+    var cartSize=orders.length;
+
 
     // Add burger to orders
     orders.push([name, size, price]);
@@ -34,21 +36,31 @@ function addBurger(bid) {
     localStorage.setItem('total', total);
 
     // Update cart UI
-    bcart.innerHTML += '<li>' + name + ' ' + size + ' ' + price + '</li>';
+
+    bt1 =   '<div class = "del" onclick="removeBurger(' + cartSize +')"> x </div>';
+
+
+    bcart.innerHTML += '<li>' + name + ' ' + size + ' ' + price +' ₹ '+bt1+ '</li>';
     btotal.innerHTML = 'Total: ' + total.toFixed(2) + '₹';
+    updateCart();
 }
 
 // Function to display the shopping cart on page load
 function displayShoppingCart() {
     var orders = JSON.parse(localStorage.getItem('orders')) || [];
     var total = parseFloat(localStorage.getItem('total')) || 0;
+    var cartSize=orders.length;
+
 
     // Clear previous cart content
     bcart.innerHTML = '';
 
     // Loop through orders and display them in the cart
-    for (var i = 0; i < orders.length; i++) {
-        bcart.innerHTML += '<li>' + orders[i][0] + ' ' + orders[i][1] + ' ' + orders[i][2] + '</li>';
+    for (var i = 0; i <cartSize; i++) {
+        bt1 =   '<div onclick="removeBurger(' + i +')"> x </div>';
+
+
+        bcart.innerHTML += '<li>' + orders[i][0] + ' ' + orders[i][1] + ' ' + orders[i][2] +' ₹ '+bt1+  '</li>';
     }
 
     // Display total
@@ -57,3 +69,12 @@ function displayShoppingCart() {
 
 // Call displayShoppingCart to initialize the cart on page load
 displayShoppingCart();
+function removeBurger(n){
+    var orders = JSON.parse(localStorage.getItem('orders'));
+    var total = parseFloat(localStorage.getItem('total')) ;
+    total = Number(total)- Number(orders[n][2]);
+    orders.splice(n, 1);
+    localStorage.setItem('orders', JSON.stringify(orders));
+    localStorage.setItem('total', total);
+    displayShoppingCart();
+}
