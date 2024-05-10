@@ -24,3 +24,6 @@ if (total === null || total === undefined ){
     localStorage.setItem('total',0);
     total  = localStorage.getItem('total');
 }
+
+var cart = document.querySelector('#cart');
+cart.innerHTML =orders.length;
