@@ -2,51 +2,47 @@
 {% load static %}
 
 {% block title %}S&P Burger Tower{% endblock %}
+
 {% block content %}
 <div class="container-fluid">
-       <h1 class="title">Welcome to Burger Tower</h1>
-        <p>Indulge in a Towering Selection of Delicious Burgers</p>
+    <h1 class="title">Welcome to Burger Tower</h1>
+    <p>Indulge in a Towering Selection of Delicious Burgers</p>
 
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row text-center">
+                {% for i in item %}
+                <div class="col-md-4 p-4">
+                    <img class="picture" src="{{ i.BurgerImage }}">
+                    <h5 class="pt-3" id="Bug{{ i.id }}">{{ i.BurgerName }}</h5>
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="burger{{i.id}}" value="{{ i.BurgerpriceM }}">
+                            <i>M:{{ i.BurgerpriceM }}₹</i>
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="burger{{i.id}}" value="{{ i.BurgerpriceL }}">
+                            <i>L:{{ i.BurgerpriceL }}₹</i>
+                        </label>
+                    </div>
+                    <div><button class="btn-info m-3" onclick="addBurger('{{i.id}}')">Add To Cart</button></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
 
-     <div class="row">
-  <div class="col-md-8">
-   <div class="row text-center">
-    {% for i in item %}
-    <div class="col-md-4 p-4">
-     <img class ="picture" src="{{i.BurgerImage}}">
-
-      <h5 class="pt-3" id="Bug{{i.id}}">{{i.BurgerName}}</h5>
-     <div class="form-check-inline">
-      <label class="form-check-label">
-       <input class="form-check-input" type="radio" name="Bug{{i.id}}" value="{{i.BurgerpriceM}}">
-       <i>M:{{i.BurgerpriceM}}₹ </i>
-      </label>
-
-     </div>
-     <div class="form-check-inline">
-      <label class="form-check-label">
-       <input class="form-check-input" type="radio" name="Bug{{i.id}}" value="{{i.BurgerpriceL}}">
-       <i>L:{{i.BurgerpriceL}}₹ </i>
-      </label>
-
-     </div>
-     <div><button class="btn-info m-3 ">Add To Cart</button> </div>
-
+        <div class="col-md-4 orders">
+            <div class="bg-secondary p-4 rounded">
+                <h3 class="text-center">Ordered Items</h3>
+                <ul id="bcart"></ul>
+                <h5 class="text-right" id="btotal">Total: 0₹</h5>
+            </div>
+        </div>
     </div>
-{% endfor %}
 </div>
-  </div>
+<script src="{% static 'js/border.js' %}"></script>
 
-<div class="col-md-4 orders">
-    <div class="bg-secondary p-4 rounded">
-<h3 class="text-center">Orderd  Items</h3>
- <ul id="bcart"></ul>
- <h5 class="text-right" id="btotal">Total : 0₹ </h5>
-</div>
-</div> </div>
 {% endblock %}
 
-  </div>
-     </div>
-</div>
-<script src="{% static 'js/order.js' %}"></script>

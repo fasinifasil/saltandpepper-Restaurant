@@ -1,10 +1,10 @@
-var pcart   =   document.querySelector('#pcart')
-var ptotal   =   document.querySelector('#ptotal')
+var bcart   =   document.querySelector('#bcart')
+var btotal   =   document.querySelector('#btotal')
 
-function addPizza(pid){
-    pizzaId = '#piz'+pid;
-    var name = document.querySelector(pizzaId).innerHTML;
-    var radio = 'pizza'+pid;
+function addBurger(bid){
+    burgerId = '#Bug'+bid;
+    var name = document.querySelector(burgerId).innerHTML;
+    var radio = 'burger'+bid;
     var pri = document.getElementsByName(radio);
     var size;
     if (pri[0].checked){
@@ -28,22 +28,22 @@ function addPizza(pid){
     //updating number of item in shopping cart
     var cart = document.querySelector('#cart');
     cart.innerHTML =orders.length;
-    ptotal.innerHTML = 'Total : ' +total+ '$';
-    pcart.innerHTML += '<li>'+name+ ' '+size+ ' '+price+'</li>';
+    btotal.innerHTML = 'Total : ' +total+ '$';
+    bcart.innerHTML += '<li>'+name+ ' '+size+ ' '+price+'</li>';
 }
 
-function pshoppingCart(){
+function bshoppingCart(){
     var orders = JSON.parse(localStorage.getItem('orders'));
     var total = localStorage.getItem('total')
     var cartSize = orders.length;
     pcart.innerHTML='';
-    for(let i=;i<cartSize;i++)
+    for(let i=0;i<cartSize;i++)
     {
-    pcart.innerHTML += '<li>' + orders[i][0] + ' ' + orders[i][1] + ' ' + orders[i][2] + '</li>';
+    bcart.innerHTML += '<li>' + orders[i][0] + ' ' + orders[i][1] + ' ' + orders[i][2] + '</li>';
 
     }
-    ptotal.innerHTML = 'Total : ' + total + '₹';
+    btotal.innerHTML = 'Total : ' + total + '₹';
 
     }
 
-pshoppingCart();
+bshoppingCart();
