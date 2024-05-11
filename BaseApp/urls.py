@@ -7,4 +7,6 @@ urlpatterns=[
     path('order',views.OrderPage,name='order'),
     path('success',views.successPage,name='success'),
     path('signup',views.signup,name='signup'),
+    path('login',views.loginpage,name='login'),
+    path('logout',views.LogOut,name='logout'),
 ]

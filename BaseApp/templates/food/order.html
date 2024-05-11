@@ -6,7 +6,11 @@
 {% block content %}
 
 <div class="container-fluid m-4">
+     {% if user.is_authenticated %}
+        <h2>Welcome {{user.username}}</h2>
+        {% endif %}
     <div class="row">
+
         <div class="col-md-7 text-center">
             <u><h5>Order</h5></u>
             <div class="row">
@@ -32,10 +36,19 @@
         <div class="col-md-4 text-center">
         <b>Message</b>
             <textarea name="message" id="message" cols="30" rows="5"></textarea>
+
+             {% if user.is_authenticated %}
             <div class="ml-auto m-4">
             <button type="submit" class="btn-success" onclick="orderItem()">Submit</button>
 
             </div>
+            {% else %}
+            <div class="ml-auto m-4">
+            <a href="{% url 'BaseApp:login' %}" class="btn btn-info" >Log In</a>
+            </div>
+
+        {% endif %}
+
         </div>
     </div>
 </div>

@@ -3,7 +3,9 @@ from django.shortcuts import render,redirect
 from django.views.decorators.csrf import csrf_exempt
 from BaseApp.models import PizzaModel, BurgerModel
 from django.contrib.auth.forms import UserCreationForm
-
+from .forms import NewUserForm
+from django.contrib.auth import authenticate, login,logout
+from django.contrib import messages
 # Create your views here.
 def IndexPage(request):
     request.session.set_expiry(0)
@@ -48,14 +50,31 @@ def successPage(request):
 def signup(request):
     context={}
     if request.POST:
-        form = UserCreationForm(request.POST)
+        form = NewUserForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('index')
         else:
             context['form']=form
     else:
-        form = UserCreationForm()
+        form = NewUserForm()
         context['form'] = form
 
     return render(request, 'food/signup.html',context)
+
+def loginpage(request):
+    context = {'active_link': 'login'}
+    if request.POST:
+        username = request.POST.get('username')
+        pwd = request.POST.get('password')
+        user = authenticate(request,username=username,password=pwd)
+        if user is not None:
+            login(request,user)
+            return redirect('index')
+        else:
+            messages.info(request, "Invalid credentials")
+    return render(request,'food/login.html',context)
+
+def LogOut(request):
+    logout(request)
+    return redirect('index')
