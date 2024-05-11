@@ -1,8 +1,8 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views.decorators.csrf import csrf_exempt
 from BaseApp.models import PizzaModel, BurgerModel
-from django.http import JsonResponse
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 def IndexPage(request):
@@ -44,3 +44,18 @@ def successPage(request):
     order=request.session['order']
     context={'order':order}
     return render(request,'food/success.html',context)
+
+def signup(request):
+    context={}
+    if request.POST:
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+        else:
+            context['form']=form
+    else:
+        form = UserCreationForm()
+        context['form'] = form
+
+    return render(request, 'food/signup.html',context)
