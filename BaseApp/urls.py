@@ -5,4 +5,5 @@ urlpatterns=[
     path('',views.PizzaPage,name='pizzas'),
     path('burger',views.BurgerPage,name='burgers'),
     path('order',views.OrderPage,name='order'),
+    path('success',views.successPage,name='success'),
 ]

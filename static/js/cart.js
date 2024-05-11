@@ -35,15 +35,20 @@ var note = document.querySelector('#message');
 
 function orderItem() {
     var msg = note.value;
+    var orders=localStorage.getItem('orders');
     var ur = '/food/order';
     var orderData = {};
+    orderData['orders']=orders;
     orderData['note']=msg;
     $.ajax({
         url: ur,
         type: "POST",
         data: orderData,
         success: function(data) {
-            console.log("The data was sent");
+            window.location.replace('/food/success');
+             localStorage.setItem('orders', JSON.stringify([]));
+             localStorage.setItem('total', 0);
+
         },
         error: function(xhr, status, error) {
             console.error("Error:", error);
