@@ -1,0 +1,46 @@
+{% extends 'food/base.html' %}
+{% load static %}
+
+{% block title %}S&P Orders{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid m-4">
+    <div class="row">
+        <div class="col-md-7 text-center">
+            <u><h5>Order</h5></u>
+            <div class="row">
+                <div class="col-md-3"style="font-size:10px" id="name">
+                    <b>Name</b>
+                </div>
+                 <div class="col-md-3" id="size">
+                    <b>Size</b>
+
+                </div>
+                 <div class="col-md-3" id="price">
+                    <b>Price</b>
+
+                </div>
+                <div class="col-md-1" id="rm">
+
+                </div>
+
+
+            </div>
+            <h3 id="total">Total:</h3>
+        </div>
+        <div class="col-md-4 text-center">
+        <b>Message</b>
+            <textarea name="message" id="" cols="30" rows="5"></textarea>
+            <div class="ml-auto m-4">
+            <button type="submit" class="btn-success">Submit</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/cart.js' %}"></script>
+
+
+{% endblock %}

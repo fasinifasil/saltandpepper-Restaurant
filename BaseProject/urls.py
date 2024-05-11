@@ -24,7 +24,7 @@ from BaseApp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.IndexPage,name='index'),
-    path('food',include('BaseApp.urls'),name='food')
+    path('food/',include('BaseApp.urls'),name='food')
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

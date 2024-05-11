@@ -37,7 +37,7 @@ function addBurger(bid) {
 
     // Update cart UI
 
-    bt1 =   '<div class = "del" onclick="removeBurger(' + cartSize +')"> x </div>';
+    bt1 =   '<h6><button class="btn-danger del ml-5" onclick="removeBurger(' + cartSize +')"> x </button><h6>';
 
 
     bcart.innerHTML += '<li>' + name + ' ' + size + ' ' + price +' ₹ '+bt1+ '</li>';
@@ -57,7 +57,7 @@ function displayShoppingCart() {
 
     // Loop through orders and display them in the cart
     for (var i = 0; i <cartSize; i++) {
-        bt1 =   '<div onclick="removeBurger(' + i +')"> x </div>';
+        bt1 =   '<h6><button class="btn-danger del ml-5" onclick="removeBurger(' + i +')"> x </button></h6>';
 
 
         bcart.innerHTML += '<li>' + orders[i][0] + ' ' + orders[i][1] + ' ' + orders[i][2] +' ₹ '+bt1+  '</li>';

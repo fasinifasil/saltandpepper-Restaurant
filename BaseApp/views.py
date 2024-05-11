@@ -16,3 +16,6 @@ def BurgerPage(request):
     burgers = BurgerModel.objects.all()
     context =   {'item':burgers,'active_link':'burgers'}
     return render(request,'food/burger.html',context)
+def OrderPage(request):
+    context={'active_link':'orderpage'}
+    return render(request,'food/order.html',context)
