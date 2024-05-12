@@ -7,8 +7,29 @@
 <div class="container-fluid">
     <h2>We have Recived your order</h2>
     <br>
+    <h5>Oder Id  : {{orderNum}}</h5>
     <h5><u>You have Orderd</u></h5>
-    <i>{{order}}</i><br><br>
+    <table class="table m-3 p-3">
+        <tr>
+            <th scope="col">SI No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Size</th>
+            <th scope="col">Price</th>
+
+        </tr>
+            {% for i in items %}
+
+            <tr>
+            <td>{{forloop.counter}}</td>
+            <td scope="row">{{i.name}}</td>
+            <td>{{i.size}}</td>
+            <td>{{i.price}}</td>
+
+            </tr>
+            {% endfor %}
+
+    </table>
+    <H5>Amonut payable  : {{bill}}  ₹ </H5>
     <mark>If you want to modify order Please call Us  ✆ Ph:93933443</mark>
 </div>
 

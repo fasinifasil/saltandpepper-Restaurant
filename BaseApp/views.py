@@ -91,6 +91,7 @@ def OrderPage(request):
                                bill=bill,  # Use the updated bill value here
                                note=request.session['note'])
             order.save()
+            request.session['orderNum']=order.itemNumber
             for article in orders:
                 item = ItemModel(order=order,  # Use the created order instance
                                  name=article[0],
@@ -103,8 +104,11 @@ def OrderPage(request):
 
 
 def successPage(request):
-    order=request.session['order']
-    context={'order':order}
+    orderNum=request.session['orderNum']
+    bill= request.session['bill']
+    items =ItemModel.objects.filter(order__itemNumber  =orderNum)
+
+    context={'orderNum':orderNum,'bill':bill,'items':items}
     return render(request,'food/success.html',context)
 
 def signup(request):
