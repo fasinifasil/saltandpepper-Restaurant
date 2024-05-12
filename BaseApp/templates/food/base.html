@@ -39,10 +39,15 @@
     </li>
   </ul>
   <ul class="navbar-nav ml-auto">
+<<<<<<< HEAD
     {% if user.is_authenticated %}
     <li class="nav-item mt-4">
 
       <h6 class="text-light">Welcome {{user.username}}</h6>
+=======
+    <li class="nav-item">
+      <a href="{% url 'BaseApp:order' %}" class="nav-link {% if active_link == 'orderpage' %} active {% endif %} p-3"><img src="{% static 'images/icon.png' %}"height="40px" width="40px"><span id="cart"></span></a>
+>>>>>>> 111aed1a57b15be7570ca0c0d6d944ccb3d76964
     </li>
     {% endif %}
     <li class="nav-item">
