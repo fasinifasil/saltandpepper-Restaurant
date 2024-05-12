@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{% static 'images/logo.png' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
@@ -39,11 +38,14 @@
                     <a href="{% url 'BaseApp:order' %}" class="nav-link {% if active_link == 'orderpage' %} active {% endif %} p-3"><img src="{% static 'images/icon.png' %}" height="40px" width="40px"><span id="cart"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'BaseApp:logout' %}" class="nav-link p-3"><img src="{% static 'images/user-interface.png' %}" height="40px" width="40px" class="bg-light rounded-circle"><br><span>LogOut</span></a>
+                    <a href="{% url 'BaseApp:logout' %}" class="nav-link  p-3"><img src="{% static 'images/user-interface.png' %}" height="40px" width="40px"class="bg-light rounded-circle" ><br><span>LogOut</span></a>
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a href="{% url 'BaseApp:login' %}" class="nav-link {% if active_link == 'login' %} active {% endif %} p-3"><img src="{% static 'images/user-interface.png' %}" class="bg-light rounded-circle" height="40px" width="40px"><br><span id="login">Login</span></a>
+                    <a href="{% url 'BaseApp:login' %}" class="nav-link  {% if active_link == 'login' %} active {% endif %} p-3 "><img src="{% static 'images/user-interface.png' %}" class="bg-light rounded-circle" height="40px" width="40px"><br><span id="login">Login</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'BaseApp:order' %}" class="nav-link {% if active_link == 'orderpage' %} active {% endif %} p-3"><img src="{% static 'images/icon.png' %}" height="40px" width="40px"><span id="cart" class="ml-1"></span></a>
                 </li>
             {% endif %}
         </ul>
