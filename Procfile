@@ -1,1 +1,1 @@
-web: gunicorn saltandpepperestaurant.wsgi
+web: gunicorn BaseProject.wsgi
