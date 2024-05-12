@@ -36,10 +36,12 @@ var note = document.querySelector('#message');
 function orderItem() {
     var msg = note.value;
     var orders=localStorage.getItem('orders');
+    var total=localStorage.getItem('total');
     var ur = '/food/order';
     var orderData = {};
     orderData['orders']=orders;
     orderData['note']=msg;
+    orderData['bill']=total;
     $.ajax({
         url: ur,
         type: "POST",
