@@ -1,1 +1,1 @@
-web:gunicorn BaseApp.wsgi
+web:gunicorn BaseProject.wsgi
