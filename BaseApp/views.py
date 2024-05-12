@@ -2,7 +2,6 @@ import json
 import random
 
 from django.http import HttpResponse
-<<<<<<< HEAD
 from django.shortcuts import render,redirect
 from django.views.decorators.csrf import csrf_exempt
 from BaseApp.models import PizzaModel, BurgerModel,ItemModel,OrderModel
@@ -10,13 +9,6 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import NewUserForm
 from django.contrib.auth import authenticate, login,logout
 from django.contrib import messages
-=======
-from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
-from BaseApp.models import PizzaModel, BurgerModel
-from django.http import JsonResponse
-
->>>>>>> 111aed1a57b15be7570ca0c0d6d944ccb3d76964
 # Create your views here.
 
 def randomOrderNumber(length):
@@ -24,20 +16,14 @@ def randomOrderNumber(length):
     number0 =''.join((random.choice(sample) for i in range(length)))
     return number0
 def IndexPage(request):
-<<<<<<< HEAD
     request.session.set_expiry(0)
 
-=======
->>>>>>> 111aed1a57b15be7570ca0c0d6d944ccb3d76964
     context = {'active_link': 'index'}
     return render(request, 'food/index.html', context)
 
 def PizzaPage(request):
-<<<<<<< HEAD
     request.session.set_expiry(0)
 
-=======
->>>>>>> 111aed1a57b15be7570ca0c0d6d944ccb3d76964
     pizzas = PizzaModel.objects.all()
     context = {'item': pizzas, 'active_link': 'pizzas'}
     return render(request, 'food/pizza.html', context)
@@ -51,7 +37,6 @@ def BurgerPage(request):
 
 
 
-<<<<<<< HEAD
 #
 # @csrf_exempt
 # def OrderPage(request):
@@ -157,16 +142,3 @@ def loginpage(request):
 def LogOut(request):
     logout(request)
     return redirect('index')
-=======
-
-@csrf_exempt
-def OrderPage(request):
-    if request.method == 'POST' and request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        note = request.POST.get('note')
-        print(note)  # Just for debugging, remove this line in production
-        # Process the request here
-        return JsonResponse({'message': 'Order received successfully'})  # Send a JSON response
-
-    return render(request, 'food/order.html')
-
->>>>>>> 111aed1a57b15be7570ca0c0d6d944ccb3d76964

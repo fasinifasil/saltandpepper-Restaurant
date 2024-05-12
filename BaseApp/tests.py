@@ -16,5 +16,4 @@ class pizzaPageTestCase(TestCase):
     def test_newPizza_added(self):
         countPizza    =   PizzaModel.objects.count()
         PizzaModel.objects.create(PizzaName='Italian Bbq Pizza',PizzapriceM=280,PizzapriceL=500,PizzaImage='https://img.freepik.com/premium-photo/bbq-pizza-topped-with-slices-spicy-italian-sausage-roasted-red-peppers-caramelized-onions_198067-250074.jpg')
-
         self.assertEqual(PizzaModel.objects.count(),countPizza+1)
