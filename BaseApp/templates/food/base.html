@@ -15,12 +15,12 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <!-- Brand/logo -->
     <a class="navbar-brand" href="#">
         <img src="{% static 'images/logo.png' %}" class="logo rounded-circle" alt="logo" style="width:50px;">
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav" aria-controls="mynav">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -32,10 +32,10 @@
                 <a class="nav-link {% if active_link == 'index' %} active {% endif %}" href="{% url 'index' %}">HOME</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {% if active_link == 'pizzas' %} active {% endif %}" href="{% url 'BaseApp:pizzas' %}">PIZZA </a>
+                <a class="nav-link {% if active_link == 'pizzas' %} active {% endif %}" href="{% url 'BaseApp:pizzas' %}">PIZZA</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link  {% if active_link == 'burgers' %} active {% endif %}" href="{% url 'BaseApp:burgers' %}">BURGER</a>
+                <a class="nav-link {% if active_link == 'burgers' %} active {% endif %}" href="{% url 'BaseApp:burgers' %}">BURGER</a>
             </li>
         </ul>
         <ul class="navbar-nav">
@@ -47,12 +47,21 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link disabled text-light">Welcome, {{ user.username }}</a>
+                </li>
+                <li class="nav-item">
                     <a href="{% url 'BaseApp:logout' %}" class="nav-link">
                         <img src="{% static 'images/user-interface.png' %}" height="40px" width="40px" class="bg-light rounded-circle" ><br>
                         <span>LogOut</span>
                     </a>
                 </li>
             {% else %}
+                <li class="nav-item d-sm-none"> <!-- Hide cart icon on small screens when user is not logged in -->
+                    <a href="{% url 'BaseApp:order' %}" class="nav-link {% if active_link == 'orderpage' %} active {% endif %}">
+                        <img src="{% static 'images/icon.png' %}" height="40px" width="40px">
+                        <span id="cart"></span>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="{% url 'BaseApp:login' %}" class="nav-link {% if active_link == 'login' %} active {% endif %}">
                         <img src="{% static 'images/user-interface.png' %}" class="bg-light rounded-circle" height="40px" width="40px"><br>
