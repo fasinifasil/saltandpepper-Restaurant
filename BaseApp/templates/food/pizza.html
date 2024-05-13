@@ -17,8 +17,10 @@
    <div class="row ">
     {% for i in item %}
     <div class="col-md-4 p-4">
-     <img class ="picture" src="{{i.PizzaImage}}">
-
+     <div class="image-container"> <!-- Added a container for the image -->
+            <img class="picture" src="{{i.PizzaImage}}">
+            <div class="image-overlay"></div> <!-- Overlay for hover effect -->
+          </div>
       <h5 class="pt-3" id="piz{{i.id}}">{{i.PizzaName}}</h5>
      <div class="form-check-inline">
       <label class="form-check-label">

@@ -20,7 +20,6 @@ function ShoppingCart() {
     }
     bill.innerHTML = 'Total: ' + total + '₹';
 }
-ShoppingCart();
 
 function removeItem(n) {
     var orders = JSON.parse(localStorage.getItem('orders'));
@@ -31,36 +30,28 @@ function removeItem(n) {
     localStorage.setItem('total', total);
     ShoppingCart();
 }
+
 var note = document.querySelector('#message');
 
 function orderItem() {
     var msg = note.value;
-<<<<<<< HEAD
-    var orders=localStorage.getItem('orders');
-    var total=localStorage.getItem('total');
+    var orders = localStorage.getItem('orders');
+    var total = localStorage.getItem('total');
     var ur = '/food/order';
-    var orderData = {};
-    orderData['orders']=orders;
-    orderData['note']=msg;
-    orderData['bill']=total;
-=======
-    var ur = '/food/order';
-    var orderData = {};
-    orderData['note']=msg;
->>>>>>> 111aed1a57b15be7570ca0c0d6d944ccb3d76964
+    var orderData = {
+        'orders': orders,
+        'note': msg,
+        'bill': total
+    };
+
     $.ajax({
         url: ur,
         type: "POST",
         data: orderData,
         success: function(data) {
-<<<<<<< HEAD
             window.location.replace('/food/success');
-             localStorage.setItem('orders', JSON.stringify([]));
-             localStorage.setItem('total', 0);
-
-=======
-            console.log("The data was sent");
->>>>>>> 111aed1a57b15be7570ca0c0d6d944ccb3d76964
+            localStorage.setItem('orders', JSON.stringify([]));
+            localStorage.setItem('total', 0);
         },
         error: function(xhr, status, error) {
             console.error("Error:", error);
@@ -68,3 +59,4 @@ function orderItem() {
     });
 }
 
+ShoppingCart();
