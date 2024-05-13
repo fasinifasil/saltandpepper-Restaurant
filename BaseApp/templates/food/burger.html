@@ -1,25 +1,25 @@
+<!-- burger.html -->
 {% extends 'food/base.html' %}
 {% load static %}
 
 {% block title %}S&P Burger Tower{% endblock %}
 
 {% block content %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
 <div class="container-fluid">
-    <h1 class="tsitle">Welcome to Burger Tower</h1>
+    <h1 class="title">Welcome to Burger Tower</h1>
     <i>"There's nothing quite like sinking your teeth into a juicy, flavorful burger. It's a moment of pure bliss." – Grage</i>
-
 
     <div class="row">
         <div class="col-md-8">
             <div class="row text-center">
                 {% for i in item %}
                 <div class="col-md-4 p-4">
-                    <div class="image-container"> <!-- Added a container for the image -->
-            <img class="picture" src="{{i.PizzaImage}}">
-            <div class="image-overlay"></div> <!-- Overlay for hover effect -->
-          </div>
+                    <div class="image-container">
+                        <img class="picture" src="{{ i.BurgerImage }}">
+                        <div class="image-overlay"></div> <!-- Overlay for hover effect -->
+                    </div>
                     <h5 class="pt-3" id="Bug{{ i.id }}">{{ i.BurgerName }}</h5>
                     <div class="form-check-inline">
                         <label class="form-check-label">
@@ -51,4 +51,3 @@
 <script src="{% static 'js/border.js' %}"></script>
 
 {% endblock %}
-
